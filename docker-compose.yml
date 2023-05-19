@@ -1,12 +1,12 @@
 version: '3.5'
 services:
-  mirror-update:
+  update:
     build: update
     restart: 'unless-stopped'
     volumes:
       - /volume1/docker/mirror:/mnt/mirror
 
-  mirror-http:
+  http:
     build: http
     restart: 'unless-stopped'
     volumes:
