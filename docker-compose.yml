@@ -4,13 +4,13 @@ services:
     build: update
     restart: 'unless-stopped'
     volumes:
-      - /volume1/docker/mirror:/mnt/mirror
+      - /volume1/docker/mirror/archlinux:/mnt/mirror
 
   http:
     build: http
     restart: 'unless-stopped'
     volumes:
-      - /volume1/docker/mirror:/mnt/mirror
+      - /volume1/docker/mirror/archlinux:/mnt/mirror
     networks:
       reverse_proxy:
         ipv4_address: '172.40.0.5'
