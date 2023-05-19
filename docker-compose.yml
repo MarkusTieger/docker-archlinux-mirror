@@ -1,16 +1,21 @@
-version: '3'
+version: '3.5'
 services:
   mirror-update:
     build: update
-    restart: always
+    restart: 'unless-stopped'
     volumes:
-      - mirror-data:/mnt/mirror
+      - /volume1/docker/mirror:/mnt/mirror
 
   mirror-http:
     build: http
-    restart: always
+    restart: 'unless-stopped'
     volumes:
-      - mirror-data:/mnt/mirror
-
-volumes:
-  mirror-data:
+      - /volume1/docker/mirror:/mnt/mirror
+    networks:
+      reverse_proxy:
+        ipv4_address: '172.40.0.5'
+    
+networks:
+  reverse_proxy:
+    name: reverse-proxy
+    external: true
